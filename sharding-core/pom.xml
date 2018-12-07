@@ -9,6 +9,7 @@
         <version>3.0.0</version>
     </parent>
     <artifactId>sharding-core</artifactId>
+    <version>3.0.0-za-SNAPSHOT</version>
     
     <dependencies>
         <dependency>
@@ -21,12 +22,12 @@
             <artifactId>snakeyaml</artifactId>
         </dependency>
         
-        <dependency>
+<!--        <dependency>
             <groupId>io.shardingsphere</groupId>
             <artifactId>sharding-sql-test</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
-        </dependency>
+        </dependency>-->
         
         <dependency>
             <groupId>com.h2database</groupId>

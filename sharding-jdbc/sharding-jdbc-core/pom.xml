@@ -9,20 +9,21 @@
         <version>3.0.0</version>
     </parent>
     <artifactId>sharding-jdbc-core</artifactId>
+    <version>3.0.0-za-SNAPSHOT</version>
     
     <dependencies>
         <dependency>
             <groupId>io.shardingsphere</groupId>
             <artifactId>sharding-core</artifactId>
-            <version>${project.version}</version>
+            <version>3.0.0-za-SNAPSHOT</version>
         </dependency>
         
-        <dependency>
+<!--        <dependency>
             <groupId>io.shardingsphere</groupId>
             <artifactId>sharding-sql-test</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
-        </dependency>
+        </dependency>-->
         
         <dependency>
             <groupId>com.zaxxer</groupId>
