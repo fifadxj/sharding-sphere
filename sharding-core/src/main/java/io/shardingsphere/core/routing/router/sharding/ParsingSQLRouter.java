@@ -46,6 +46,8 @@ import io.shardingsphere.core.routing.type.broadcast.DatabaseBroadcastRoutingEng
 import io.shardingsphere.core.routing.type.broadcast.InstanceBroadcastRoutingEngine;
 import io.shardingsphere.core.routing.type.broadcast.TableBroadcastRoutingEngine;
 import io.shardingsphere.core.routing.type.complex.ComplexRoutingEngine;
+import io.shardingsphere.core.routing.type.hint.DataNodeHintManager;
+import io.shardingsphere.core.routing.type.hint.DataNodeHintRoutingEngine;
 import io.shardingsphere.core.routing.type.ignore.IgnoreRoutingEngine;
 import io.shardingsphere.core.routing.type.standard.StandardRoutingEngine;
 import io.shardingsphere.core.routing.type.unicast.UnicastRoutingEngine;
@@ -145,6 +147,8 @@ public final class ParsingSQLRouter implements ShardingRouter {
             routingEngine = new UnicastRoutingEngine(shardingRule, tableNames);
         } else if (tableNames.isEmpty()) {
             routingEngine = new DatabaseBroadcastRoutingEngine(shardingRule);
+        } else if (DataNodeHintManager.hasHint() && (1 == tableNames.size() || shardingRule.isAllBindingTables(tableNames))) {
+            routingEngine = new DataNodeHintRoutingEngine(shardingRule, tableNames.iterator().next(), sqlStatement);
         } else if (1 == tableNames.size() || shardingRule.isAllBindingTables(tableNames) || shardingRule.isAllInDefaultDataSource(tableNames)) {
             routingEngine = new StandardRoutingEngine(shardingRule, tableNames.iterator().next(), shardingConditions);
         } else {
